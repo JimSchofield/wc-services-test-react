@@ -8,6 +8,17 @@ export type Todo = {
 export default class MyTodos extends Service {
   todos: Todo[] = [];
 
+  someBool = false;
+
+  get length() {
+    return this.todos.length;
+  }
+
+  toggleBool() {
+    this.someBool = !this.someBool;
+    this.notify();
+  }
+
   addTodo(name: string) {
     this.todos.push({
       name,
@@ -23,6 +34,11 @@ export default class MyTodos extends Service {
 
   clearTodos() {
     this.todos = [];
+    this.notify();
+  }
+
+  reverseTodos() {
+    this.todos = [...this.todos.reverse()];
     this.notify();
   }
 }
