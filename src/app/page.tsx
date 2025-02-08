@@ -5,6 +5,8 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import { useService } from "./hooks/useService";
 import MyTodos from "./services/my-todos";
+import { MyToggle } from "./components/MyToggle";
+import { MyList } from "./components/MyList";
 
 customElements.define("service-provider", ServiceProviderComponent);
 
@@ -21,9 +23,12 @@ export default function Home() {
     setTodo("");
   };
 
+  console.log("Page rendering");
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
+        <MyToggle />
         <h1>Todos ({state.todos.length})</h1>
         <p>{state.someBool.toString()}</p>
         <div>
@@ -60,6 +65,7 @@ export default function Home() {
             Reverse todos
           </button>
         </div>
+        <MyList />
       </main>
     </div>
   );
